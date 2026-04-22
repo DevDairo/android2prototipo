@@ -12,7 +12,7 @@ object RetrofitClient {
     // Para encontrarla en Windows: ejecuta `ipconfig` en cmd.
     // Para encontrarla en Linux/Mac: ejecuta `ifconfig` o `ip addr`.
     // El puerto 5001 es el que define tu config.py del backend.
-    private const val BASE_URL = "http://192.168.1.XXX:5001/"
+    private const val BASE_URL = "http://192.168.0.196:5001/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY // Solo en debug

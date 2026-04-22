@@ -1,6 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- ═══════════════════════════════════════
+         BARRA SUPERIOR DE BÚSQUEDA
+         ═══════════════════════════════════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="12dp"
+        android:background="#1A1A1A"
+        android:elevation="4dp">
+
+        <!-- Botón volver -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:padding="10dp" />
+
+        <!-- Campo de búsqueda -->
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_search_field"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:hint="@string/hint_search"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:maxLines="1" />
+
+        <!-- Botón limpiar (oculto por defecto) -->
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_close"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_clear"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- ═══════════════════════════════════════
+         PANEL DE DESCARGA ACTIVA
+         Visible solo cuando hay una descarga en curso
+         ═══════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/downloadPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1DB954"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone">
+
+        <!-- Nombre de la canción descargando -->
+        <TextView
+            android:id="@+id/txtDownloadTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/txt_downloading" />
+
+        <!-- Fila: barra de progreso + porcentaje -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp">
+
+            <ProgressBar
+                android:id="@+id/progressDownload"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                android:layout_weight="1"
+                android:progressTint="#000000"
+                android:progressBackgroundTint="#33000000"
+                android:max="100"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/txtDownloadPercent"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:text="@string/txt_progress_default" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ═══════════════════════════════════════
+         MENSAJE DE ESTADO
+         Visible para: "Buscando...", errores, sin resultados
+         ═══════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingBottom="16dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:textColor="#777777"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <!-- ═══════════════════════════════════════
+         LISTA DE RESULTADOS
+         ═══════════════════════════════════════ -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerResults"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp" />
+
+</LinearLayout>

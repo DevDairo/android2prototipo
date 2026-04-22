@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MusicFlow</string>
+
+    <!-- SearchActivity -->
+    <string name="hint_search">Buscar canción o artista...</string>
+    <string name="cd_back">Volver</string>
+    <string name="cd_clear">Limpiar</string>
+    <string name="cd_download">Descargar</string>
+    <string name="txt_downloading">Descargando...</string>
+    <string name="txt_progress_default">0%</string>
+    <string name="cd_thumbnail">Miniatura</string>
 </resources>
